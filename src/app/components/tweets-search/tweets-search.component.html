@@ -1,0 +1,37 @@
+<mat-card class="card">    
+  <mat-form-field class="form-field">    
+    <input matInput 
+      [(ngModel)]="searchTerm" 
+      placeholder="Enter search term"/>      
+  </mat-form-field>
+  <mat-form-field class="select">    
+    <mat-select placeholder="Limit" [(value)]="tweetCount">
+      <mat-option value="5">5</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="25">25</mat-option>
+      <mat-option value="50">50</mat-option>
+    </mat-select>    
+  </mat-form-field>
+  <mat-form-field class="select">    
+    <mat-select placeholder="Sort by" [(value)]="resultType">
+      <mat-option value="mixed">Mixed</mat-option>
+      <mat-option value="recent">Recent</mat-option>
+      <mat-option value="popular">Poupular</mat-option>
+    </mat-select>    
+  </mat-form-field>
+  <div class="button-row">      
+    <button 
+      mat-stroked-button color="primary" 
+      (click)="onClick()">Search
+    </button>       
+  </div>
+</mat-card >
+
+<app-tweets
+  *ngIf="selectedResultType && 
+  selectedSearchTerm && 
+  selectedTweetCount"
+  [searchTerm]="selectedSearchTerm"
+  [tweetCount]="selectedTweetCount"
+  [resultType]="selectedResultType">
+</app-tweets>

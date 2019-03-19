@@ -1,0 +1,23 @@
+<mat-card class="card">      
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"
+      [ngStyle]="{'background-image': 'url(' + tweet.user.profile_image_url + ')'  }">        
+    </div>     
+    <mat-card-title>Tweet by {{ tweet.user.screen_name }}</mat-card-title> 
+    <mat-card-subtitle 
+      *ngIf="tweet.user.screen_name!==tweet.user.name"> 
+      aka. {{ tweet.user.name }}
+    </mat-card-subtitle>       
+  </mat-card-header>      
+  <mat-card-content>
+    <div>{{ tweet.text }}</div>
+    <p>Created at {{ tweet.created_at | date: medium }}</p>
+    
+    <p *ngIf="tweet.retweet_count != 1; else hasOneRetweet">
+      This tweet has {{ tweet.retweet_count }} retweets.
+    </p>
+    <ng-template #hasOneRetweet>
+      <p>This tweet has 1 retweet.</p>
+    </ng-template>
+  </mat-card-content>         
+</mat-card>

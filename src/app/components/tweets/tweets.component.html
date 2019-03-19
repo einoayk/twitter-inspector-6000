@@ -1,0 +1,29 @@
+<div *ngIf="error">
+  <mat-card class="card">
+    {{ error }}
+  </mat-card>
+</div>
+
+<div *ngIf="twitter">
+
+  <p *ngIf="twitter.search.length === 0">
+    <mat-card class="example-card">
+      No tweets were found.
+    </mat-card>  
+  </p>
+ 
+  <p *ngIf="twitter.search.length < tweetCount && twitter.search.length !== 0">
+    <mat-card class="card">
+      Only {{ twitter.search.length }}/{{ tweetCount }} tweets were found:
+    </mat-card>
+  </p>
+
+  <div *ngFor="let tweet of twitter.search; let i=index">
+    <p *ngIf="i < tweetCount">
+      <app-tweet [tweet]="tweet"></app-tweet>
+    </p>    
+  </div>
+
+</div>  
+
+

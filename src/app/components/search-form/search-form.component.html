@@ -1,0 +1,19 @@
+<div class="search">
+  <mat-card class="card" color="secondary">
+    <mat-card-header>    
+      <mat-card-title>What do you want to inspect?</mat-card-title> 
+      <mat-radio-group [(ngModel)]="selectedSearch">
+        <mat-radio-button [value]="users">Twitter users</mat-radio-button>
+        <mat-radio-button [value]="tweets">Tweets</mat-radio-button>
+      </mat-radio-group>   
+    </mat-card-header> 
+    <mat-card-content>
+      <app-user-search 
+        *ngIf="selectedSearch===users">
+      </app-user-search>
+      <app-tweets-search 
+        *ngIf="selectedSearch===tweets">
+      </app-tweets-search>
+  </mat-card-content>
+  </mat-card>
+</div>

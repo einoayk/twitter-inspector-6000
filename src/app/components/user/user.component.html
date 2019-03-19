@@ -1,0 +1,83 @@
+
+<div *ngIf="error">
+  {{ error }}
+</div>
+
+
+<div *ngIf="twitter">
+  <p *ngIf="twitter.user === null">
+    <mat-card >
+      {{ username }} doesn't seem to be a valid username :/
+    </mat-card>
+  </p> 
+
+  <p *ngIf="twitter.user !== null">
+    <mat-card  class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"
+          [ngStyle]="{'background-image': 'url(' + twitter.user.profile_image_url + ')'  }">        
+        </div>     
+        <mat-card-title>Twitter profile of {{ twitter.user.screen_name }}</mat-card-title>
+        <mat-card-subtitle 
+          *ngIf="twitter.user.screen_name!==twitter.user.name"> 
+          aka. {{ twitter.user.name }}
+        </mat-card-subtitle>
+      </mat-card-header>     
+    
+      <mat-card-content>
+        <p>
+          {{ twitter.user.description }}
+        </p>
+
+        <div *ngIf="twitter.user.tweets_count === 0; else hasTweets">
+          {{ twitter.user.screen_name }} doesn't have any tweets
+        </div>
+
+        <ng-template #hasTweets>
+
+          <div *ngIf="twitter.user.tweets === null; else canBeViewed">
+            {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count }} tweets but they can't be viewed :(
+          </div>
+            
+          <ng-template #canBeViewed>
+            <div *ngIf="twitter.user.tweets_count === 1">
+              {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count }} tweet:
+              <p *ngFor="let tweet of twitter.user.tweets">
+                {{ tweet.text }}
+              </p>
+            </div>
+
+            <div *ngIf="twitter.user.tweets_count > 1 && twitter.user.tweets_count <= 5">
+              {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count }} tweets:
+              <mat-list class="list">
+                <mat-divider ></mat-divider>
+                <mat-list-item *ngFor="let tweet of twitter.user.tweets" class="list-item">
+                  {{ tweet.text }} 
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list> 
+            </div>
+
+            <div *ngIf="twitter.user.tweets_count > 5">
+              {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count}} tweets, here are five of them:
+              <mat-list class="list">
+                <mat-divider ></mat-divider>
+                <mat-list-item *ngFor="let tweet of twitter.user.tweets" class="list-item">
+                  {{ tweet.text }} 
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>              
+            </div>
+          </ng-template>
+
+        </ng-template>              
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <a *ngIf="twitter.user.url" mat-stroked-button href="{{ twitter.user.url }}" target="_blank">Visit website</a>       
+      </mat-card-actions>
+    </mat-card>
+  </p> 
+</div>  
+ 
+

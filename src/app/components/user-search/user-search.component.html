@@ -1,0 +1,17 @@
+<mat-card class="card">    
+  <mat-form-field class="form-field">
+    <input matInput 
+      [(ngModel)]="username" 
+      placeholder="Enter username"/>
+  </mat-form-field>
+  <div class="button-row">      
+    <button mat-stroked-button 
+      color="primary" 
+      (click)="onClick()">Search
+    </button>       
+  </div>
+</mat-card>
+<app-user 
+  *ngIf="selectedUsername" 
+  [username]="selectedUsername">
+</app-user>
