@@ -11,7 +11,7 @@
   </mat-card-header>      
   <mat-card-content>
     <div>{{ tweet.text }}</div>
-    <p>Created at {{ tweet.created_at | date: medium }}</p>
+    <p>Created at {{ tweet.created_at | date }}</p>
     
     <p *ngIf="tweet.retweet_count != 1; else hasOneRetweet">
       This tweet has {{ tweet.retweet_count }} retweets.
