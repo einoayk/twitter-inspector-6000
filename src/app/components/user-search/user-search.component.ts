@@ -5,17 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user-search.component.html',
   styleUrls: ['./user-search.component.css']
 })
-export class UserSearchComponent implements OnInit {
+export class UserSearchComponent {
   username: string;
   selectedUsername: string;
 
   onClick() {
     this.selectedUsername = this.username;
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
