@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./tweets-search.component.css']
 })
 export class TweetsSearchComponent {
-  selectedSearchTerm: string;  
   searchTerm: string;
+  selectedSearchTerm: string;
 
   tweetCount: string;
   selectedTweetCount: number;

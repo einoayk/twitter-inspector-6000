@@ -1,8 +1,9 @@
 
 <div *ngIf="error">
-  {{ error }}
+  <mat-card class="card">
+    {{ error }}
+  </mat-card>  
 </div>
-
 
 <div *ngIf="twitter">
   <p *ngIf="twitter.user === null">
@@ -14,10 +15,13 @@
   <p *ngIf="twitter.user !== null">
     <mat-card  class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="header-image"
-          [ngStyle]="{'background-image': 'url(' + twitter.user.profile_image_url + ')'  }">        
+        <div mat-card-avatar
+         class="header-image"
+         [ngStyle]="{'background-image': 'url(' + twitter.user.profile_image_url + ')'  }">        
         </div>     
-        <mat-card-title>Twitter profile of {{ twitter.user.screen_name }}</mat-card-title>
+        <mat-card-title>
+          Twitter profile of {{ twitter.user.screen_name }}
+        </mat-card-title>
         <mat-card-subtitle 
           *ngIf="twitter.user.screen_name!==twitter.user.name"> 
           aka. {{ twitter.user.name }}
@@ -28,17 +32,16 @@
         <p>
           {{ twitter.user.description }}
         </p>
-
-        <div *ngIf="twitter.user.tweets_count === 0; else hasTweets">
+        <div 
+          *ngIf="twitter.user.tweets_count === 0; else hasTweets">
           {{ twitter.user.screen_name }} doesn't have any tweets
         </div>
 
         <ng-template #hasTweets>
-
           <div *ngIf="twitter.user.tweets === null; else canBeViewed">
             {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count }} tweets but they can't be viewed :(
           </div>
-            
+
           <ng-template #canBeViewed>
             <div *ngIf="twitter.user.tweets_count === 1">
               {{ twitter.user.screen_name }} has {{ twitter.user.tweets_count }} tweet:
@@ -69,12 +72,15 @@
               </mat-list>              
             </div>
           </ng-template>
-
-        </ng-template>              
-        
+        </ng-template>        
       </mat-card-content>
       <mat-card-actions>
-        <a *ngIf="twitter.user.url" mat-stroked-button href="{{ twitter.user.url }}" target="_blank">Visit website</a>       
+        <a 
+          *ngIf="twitter.user.url" 
+          mat-stroked-button 
+          href="{{ twitter.user.url }}" 
+          target="_blank">Visit website
+        </a>       
       </mat-card-actions>
     </mat-card>
   </p> 

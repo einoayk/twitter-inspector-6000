@@ -18,11 +18,11 @@ export class UserComponent implements OnChanges {
     
   ngOnChanges (changes: SimpleChanges) {
     this.twitter = undefined; 
-    this.getAccount(this.username);
+    this.getUser(this.username);
   }  
 
-  private getAccount(username: string): void {
-    this.userSercive.getAccount(username)
+  private getUser(username: string): void {
+    this.userSercive.getUser(username)
       .subscribe(twitter => this.twitter = twitter,
         error => this.error = error);       
   }  

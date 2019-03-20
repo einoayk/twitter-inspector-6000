@@ -1,1 +1,6 @@
-{}
+{
+  "projects": {
+    "twitter-inspector-6000": "test-app-42d01",
+    "default": "test-app-42d01"
+  }
+}

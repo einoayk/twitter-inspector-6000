@@ -36,7 +36,7 @@ export class UserService {
 
   constructor(private apollo: Apollo) { }
 
-  public getAccount(username: string): Observable<Twitter> {            
+  public getUser(username: string): Observable<Twitter> {            
     return this.apollo.watchQuery<TwitterQuery>({
       query: TwitterUserQuery,
       variables: {

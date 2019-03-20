@@ -9,7 +9,7 @@ import { UserComponent } from './components/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { SearchFormComponent } from './components/search-form/search-form.component';
+import { SearchComponent } from './components/search/search.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { TweetsSearchComponent } from './components/tweets-search/tweets-search.component';
 import { TweetsComponent } from './components/tweets/tweets.component';
@@ -21,7 +21,7 @@ import { TweetComponent } from './components/tweet/tweet.component';
     AppComponent,    
     UserComponent,
     ToolbarComponent,
-    SearchFormComponent,
+    SearchComponent,
     UserSearchComponent,    
     TweetsSearchComponent, TweetsComponent, TweetComponent, 
   ],
